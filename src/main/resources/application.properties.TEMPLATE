@@ -1,0 +1,14 @@
+# For running the development environment, follow these steps:
+# 1. Make a copy of this file and name it application.properties
+# 2. Create a new application at https://dev.twitch.tv/console/apps/create. Set the redirect URL to http://localhost:8000/auth/twitch
+# 3. Change these two values to your Twitch application's client ID and secret ID.
+twitch.client.id=CHANGE_ME
+twitch.secret.id=CHANGE_ME
+
+jwt.secret=CHANGE_ME
+jwt.validity.seconds=43200
+
+database.driver.class.name=org.mariadb.jdbc.Driver
+database.url=jdbc:mariadb://localhost:3306/srrdb
+database.username=srrdb
+database.password=srrdbpassword

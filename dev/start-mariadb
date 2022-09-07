@@ -1,0 +1,8 @@
+#!/bin/bash
+
+docker run --name srrdb \
+  -p 3306:3306 \
+  -v /home/$(whoami)/srrdb/config:/etc/mysql \
+  -v /home/$(whoami)/srrdb/data:/var/lib/mysql \
+  -e MYSQL_ROOT_PASSWORD=srrdbpassword \
+  -d mariadb:10.5.9-focal
