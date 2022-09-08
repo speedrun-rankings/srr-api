@@ -1,45 +1,40 @@
 package io.github.sornerol.speedrunrankingsapi.config
 
 import groovy.transform.CompileStatic
-import org.apache.ibatis.session.SqlSessionFactory
-import org.mybatis.spring.SqlSessionFactoryBean
-import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.jdbc.DataSourceBuilder
+import org.jooq.conf.RenderQuotedNames
+import org.jooq.conf.Settings
+import org.jooq.impl.DataSourceConnectionProvider
+import org.jooq.impl.DefaultConfiguration
+import org.jooq.impl.DefaultDSLContext
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy
 
 import javax.sql.DataSource
 
 @Configuration
 @CompileStatic
 class DatabaseConfig {
-    @Value('${database.driver.class.name}')
-    String dbDriverClass
 
-    @Value('${database.url}')
-    String dbUrl
-
-    @Value('${database.username}')
-    String dbUsername
-
-    @Value('${database.password}')
-    String dbPassword
+    @Autowired
+    private DataSource dataSource
 
     @Bean
-    DataSource dataSource() {
-        DataSourceBuilder.create()
-                .driverClassName(dbDriverClass)
-                .url(dbUrl)
-                .username(dbUsername)
-                .password(dbPassword)
-                .build()
+    DataSourceConnectionProvider connectionProvider() {
+        new DataSourceConnectionProvider (new TransactionAwareDataSourceProxy(dataSource))
     }
 
     @Bean
-    SqlSessionFactory sqlSessionFactory() {
-        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean()
-        factoryBean.dataSource = dataSource()
-        factoryBean.object
+    DefaultConfiguration configuration() {
+        DefaultConfiguration jooqConfiguration = new DefaultConfiguration()
+        jooqConfiguration.set(connectionProvider())
+        jooqConfiguration.set(new Settings().withRenderQuotedNames(RenderQuotedNames.NEVER))
+        jooqConfiguration
     }
 
+    @Bean
+    DefaultDSLContext dsl() {
+        new DefaultDSLContext(configuration())
+    }
 }
