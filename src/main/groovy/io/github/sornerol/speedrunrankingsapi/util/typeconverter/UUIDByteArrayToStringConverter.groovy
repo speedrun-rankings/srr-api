@@ -2,15 +2,27 @@ package io.github.sornerol.speedrunrankingsapi.util.typeconverter
 
 import org.jooq.Converter
 
-class UUIDByteArrayToStringConverter implements Converter<byte[], String> {
+import java.nio.ByteBuffer
+
+class UUIDByteArrayToStringConverter implements Converter<byte[], UUID> {
     @Override
-    String from(byte[] bytes) {
-        bytes?.encodeHex()?.toString()
+    UUID from(byte[] bytes) {
+        if (!bytes) {
+            return null
+        }
+        ByteBuffer bb = ByteBuffer.wrap(bytes)
+        new UUID(bb.getLong(), bb.getLong())
     }
 
     @Override
-    byte[] to(String s) {
-        s?.decodeHex()
+    byte[] to(UUID uuid) {
+        if (!uuid) {
+            return null
+        }
+        ByteBuffer.wrap(new byte[16])
+                .putLong(uuid.mostSignificantBits)
+                .putLong(uuid.leastSignificantBits)
+                .array()
     }
 
     @Override
@@ -19,7 +31,7 @@ class UUIDByteArrayToStringConverter implements Converter<byte[], String> {
     }
 
     @Override
-    Class<String> toType() {
-        String.class
+    Class<UUID> toType() {
+        UUID.class
     }
 }

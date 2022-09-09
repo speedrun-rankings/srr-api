@@ -3,7 +3,7 @@ package io.github.sornerol.speedrunrankingsapi.model
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 class SrrUser {
-    String id
+    UUID id
     String username
     @JsonIgnore String password
     String email
