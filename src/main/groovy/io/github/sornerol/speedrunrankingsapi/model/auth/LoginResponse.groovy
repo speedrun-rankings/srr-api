@@ -5,11 +5,13 @@ import io.github.sornerol.speedrunrankingsapi.model.SrrUser
 
 @CompileStatic
 class LoginResponse {
-    String jwtToken
+    String accessToken
+    String refreshToken
     SrrUser user
 
-    LoginResponse(String jwtToken, SrrUser user) {
-        this.jwtToken = jwtToken
+    LoginResponse(String accessToken, String refreshToken, SrrUser user) {
+        this.accessToken = accessToken
+        this.refreshToken = refreshToken
         this.user = user
     }
 }
