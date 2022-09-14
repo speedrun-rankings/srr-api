@@ -8,6 +8,9 @@ class SrrUser {
     @JsonIgnore String password
     String email
     Boolean enabled
-    List<String> siteRoles
-    List<String> additionalPermissions
+    String siteRole
+    List<UUID> moderatedGames
+    List<UUID> moderatedSeries
+    List<UUID> ownedGames
+    List<UUID> ownedSeries
 }
