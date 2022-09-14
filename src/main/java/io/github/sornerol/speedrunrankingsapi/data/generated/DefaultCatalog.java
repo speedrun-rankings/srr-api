@@ -4,7 +4,6 @@
 package io.github.sornerol.speedrunrankingsapi.data.generated;
 
 
-import io.github.sornerol.speedrunrankingsapi.data.generated.mysql.Mysql;
 import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.Srrdb;
 
 import java.util.Arrays;
@@ -28,11 +27,6 @@ public class DefaultCatalog extends CatalogImpl {
     public static final DefaultCatalog DEFAULT_CATALOG = new DefaultCatalog();
 
     /**
-     * The schema <code>mysql</code>.
-     */
-    public final Mysql MYSQL = Mysql.MYSQL;
-
-    /**
      * The schema <code>srrdb</code>.
      */
     public final Srrdb SRRDB = Srrdb.SRRDB;
@@ -47,7 +41,6 @@ public class DefaultCatalog extends CatalogImpl {
     @Override
     public final List<Schema> getSchemas() {
         return Arrays.<Schema>asList(
-            Mysql.MYSQL,
             Srrdb.SRRDB);
     }
 }

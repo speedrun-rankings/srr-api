@@ -10,8 +10,13 @@
         <database>
             <name>org.jooq.meta.mariadb.MariaDBDatabase</name>
             <includes>
-                user
+                .*
             </includes>
+            <excludes>
+                mysql.*
+                |information_schema.*
+                |performance_schema.*
+            </excludes>
             <forcedTypes>
                 <forcedType>
                     <userType>java.lang.String</userType>
