@@ -5,6 +5,7 @@ package io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.pojos
 
 
 import java.io.Serializable;
+import java.util.UUID;
 
 
 /**
@@ -15,10 +16,10 @@ public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final String id;
+    private final UUID   id;
     private final String name;
     private final String permalink;
-    private final String gameId;
+    private final UUID   gameId;
 
     public Category(Category value) {
         this.id = value.id;
@@ -28,10 +29,10 @@ public class Category implements Serializable {
     }
 
     public Category(
-        String id,
+        UUID   id,
         String name,
         String permalink,
-        String gameId
+        UUID   gameId
     ) {
         this.id = id;
         this.name = name;
@@ -42,7 +43,7 @@ public class Category implements Serializable {
     /**
      * Getter for <code>srrdb.category.id</code>.
      */
-    public String getId() {
+    public UUID getId() {
         return this.id;
     }
 
@@ -63,7 +64,7 @@ public class Category implements Serializable {
     /**
      * Getter for <code>srrdb.category.game_id</code>.
      */
-    public String getGameId() {
+    public UUID getGameId() {
         return this.gameId;
     }
 

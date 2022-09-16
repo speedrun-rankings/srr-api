@@ -39,11 +39,20 @@ class JwtUserDetailsService implements UserDetailsService {
     private static List<GrantedAuthority> grantedAuthoritiesForUser(SrrUser user) {
         List<GrantedAuthority> authorities = []
 
-        user.siteRoles?.each { role ->
-            authorities << new SimpleGrantedAuthority("ROLE_${role}")
+        if (user.siteRole) {
+            authorities << new SimpleGrantedAuthority("ROLE_${user.siteRole}")
         }
-        user.additionalPermissions?.each { privilege ->
-            authorities << new SimpleGrantedAuthority(privilege)
+        user.moderatedGames?.each {moderatedGame ->
+            authorities << new SimpleGrantedAuthority("MODGAME_${moderatedGame}")
+        }
+        user.moderatedSeries?.each {moderatedSeries ->
+            authorities << new SimpleGrantedAuthority("MODSERIES_${moderatedSeries}")
+        }
+        user.ownedGames?.each {ownedGame ->
+            authorities << new SimpleGrantedAuthority("OWNGAME_${ownedGame}")
+        }
+        user.moderatedGames?.each {ownedSeries ->
+            authorities << new SimpleGrantedAuthority("OWNSERIES_${ownedSeries}")
         }
         authorities
     }

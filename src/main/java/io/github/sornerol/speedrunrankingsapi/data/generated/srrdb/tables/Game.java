@@ -12,6 +12,7 @@ import io.github.sornerol.speedrunrankingsapi.util.typeconverter.UUIDByteArrayTo
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
@@ -52,7 +53,7 @@ public class Game extends TableImpl<GameRecord> {
     /**
      * The column <code>srrdb.game.id</code>.
      */
-    public final TableField<GameRecord, String> ID = createField(DSL.name("id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
+    public final TableField<GameRecord, UUID> ID = createField(DSL.name("id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
 
     /**
      * The column <code>srrdb.game.name</code>.
@@ -62,7 +63,7 @@ public class Game extends TableImpl<GameRecord> {
     /**
      * The column <code>srrdb.game.series_id</code>.
      */
-    public final TableField<GameRecord, String> SERIES_ID = createField(DSL.name("series_id"), SQLDataType.BINARY(16).defaultValue(DSL.field("NULL", SQLDataType.BINARY)), this, "", new UUIDByteArrayToStringConverter());
+    public final TableField<GameRecord, UUID> SERIES_ID = createField(DSL.name("series_id"), SQLDataType.BINARY(16).defaultValue(DSL.field("NULL", SQLDataType.BINARY)), this, "", new UUIDByteArrayToStringConverter());
 
     /**
      * The column <code>srrdb.game.release_date</code>.
@@ -167,7 +168,7 @@ public class Game extends TableImpl<GameRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row5<String, String, String, LocalDate, String> fieldsRow() {
+    public Row5<UUID, String, UUID, LocalDate, String> fieldsRow() {
         return (Row5) super.fieldsRow();
     }
 }

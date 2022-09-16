@@ -11,6 +11,7 @@ import io.github.sornerol.speedrunrankingsapi.util.typeconverter.UUIDByteArrayTo
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
@@ -51,7 +52,7 @@ public class Category extends TableImpl<CategoryRecord> {
     /**
      * The column <code>srrdb.category.id</code>.
      */
-    public final TableField<CategoryRecord, String> ID = createField(DSL.name("id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
+    public final TableField<CategoryRecord, UUID> ID = createField(DSL.name("id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
 
     /**
      * The column <code>srrdb.category.name</code>.
@@ -66,7 +67,7 @@ public class Category extends TableImpl<CategoryRecord> {
     /**
      * The column <code>srrdb.category.game_id</code>.
      */
-    public final TableField<CategoryRecord, String> GAME_ID = createField(DSL.name("game_id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
+    public final TableField<CategoryRecord, UUID> GAME_ID = createField(DSL.name("game_id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
 
     private Category(Name alias, Table<CategoryRecord> aliased) {
         this(alias, aliased, null);
@@ -161,7 +162,7 @@ public class Category extends TableImpl<CategoryRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row4<String, String, String, String> fieldsRow() {
+    public Row4<UUID, String, String, UUID> fieldsRow() {
         return (Row4) super.fieldsRow();
     }
 }

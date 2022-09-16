@@ -5,6 +5,7 @@ package io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.pojos
 
 
 import java.io.Serializable;
+import java.util.UUID;
 
 
 /**
@@ -15,7 +16,7 @@ public class UserSiteRoleAsg implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final String  userId;
+    private final UUID    userId;
     private final Integer siteRoleId;
 
     public UserSiteRoleAsg(UserSiteRoleAsg value) {
@@ -24,7 +25,7 @@ public class UserSiteRoleAsg implements Serializable {
     }
 
     public UserSiteRoleAsg(
-        String  userId,
+        UUID    userId,
         Integer siteRoleId
     ) {
         this.userId = userId;
@@ -34,7 +35,7 @@ public class UserSiteRoleAsg implements Serializable {
     /**
      * Getter for <code>srrdb.user_site_role_asg.user_id</code>.
      */
-    public String getUserId() {
+    public UUID getUserId() {
         return this.userId;
     }
 

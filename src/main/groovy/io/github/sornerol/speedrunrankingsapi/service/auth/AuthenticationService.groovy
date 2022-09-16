@@ -52,9 +52,11 @@ class AuthenticationService {
         }
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.username)
-        String jwtToken = tokenManager.generateJwtToken(userDetails)
+        String accessToken = tokenManager.generateJwtToken(userDetails)
+        //TODO: Store refresh token to validate against later
+        UUID refreshToken = UUID.randomUUID()
         SrrUser user = userService.getUserByUsername(loginRequest.username)
-        ResponseEntity.ok(new LoginResponse(jwtToken, user))
+        ResponseEntity.ok(new LoginResponse(accessToken, refreshToken.toString(), user))
     }
 
 }

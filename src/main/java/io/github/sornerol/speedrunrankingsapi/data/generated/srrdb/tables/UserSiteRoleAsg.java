@@ -11,6 +11,7 @@ import io.github.sornerol.speedrunrankingsapi.util.typeconverter.UUIDByteArrayTo
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
@@ -51,7 +52,7 @@ public class UserSiteRoleAsg extends TableImpl<UserSiteRoleAsgRecord> {
     /**
      * The column <code>srrdb.user_site_role_asg.user_id</code>.
      */
-    public final TableField<UserSiteRoleAsgRecord, String> USER_ID = createField(DSL.name("user_id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
+    public final TableField<UserSiteRoleAsgRecord, UUID> USER_ID = createField(DSL.name("user_id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
 
     /**
      * The column <code>srrdb.user_site_role_asg.site_role_id</code>.
@@ -159,7 +160,7 @@ public class UserSiteRoleAsg extends TableImpl<UserSiteRoleAsgRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row2<String, Integer> fieldsRow() {
+    public Row2<UUID, Integer> fieldsRow() {
         return (Row2) super.fieldsRow();
     }
 }

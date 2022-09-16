@@ -6,9 +6,8 @@ twitch.client.id=CHANGE_ME
 twitch.secret.id=CHANGE_ME
 
 jwt.secret=CHANGE_ME
-jwt.validity.seconds=43200
+jwt.validity.seconds=300
 
-database.driver.class.name=org.mariadb.jdbc.Driver
-database.url=jdbc:mariadb://localhost:3306/srrdb
-database.username=srrdb
-database.password=srrdbpassword
+spring.datasource.url=jdbc:mariadb://localhost:3306/srrdb
+spring.datasource.username=srrdb
+spring.datasource.password=srrdbpassword

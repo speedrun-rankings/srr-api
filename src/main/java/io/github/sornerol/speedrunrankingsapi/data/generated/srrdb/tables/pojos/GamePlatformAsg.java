@@ -5,6 +5,7 @@ package io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.pojos
 
 
 import java.io.Serializable;
+import java.util.UUID;
 
 
 /**
@@ -15,7 +16,7 @@ public class GamePlatformAsg implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final String  gameId;
+    private final UUID    gameId;
     private final Integer platformId;
 
     public GamePlatformAsg(GamePlatformAsg value) {
@@ -24,7 +25,7 @@ public class GamePlatformAsg implements Serializable {
     }
 
     public GamePlatformAsg(
-        String  gameId,
+        UUID    gameId,
         Integer platformId
     ) {
         this.gameId = gameId;
@@ -34,7 +35,7 @@ public class GamePlatformAsg implements Serializable {
     /**
      * Getter for <code>srrdb.game_platform_asg.game_id</code>.
      */
-    public String getGameId() {
+    public UUID getGameId() {
         return this.gameId;
     }
 

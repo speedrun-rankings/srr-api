@@ -11,6 +11,7 @@ import io.github.sornerol.speedrunrankingsapi.util.typeconverter.UUIDByteArrayTo
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
@@ -50,17 +51,17 @@ public class Run extends TableImpl<RunRecord> {
     /**
      * The column <code>srrdb.run.id</code>.
      */
-    public final TableField<RunRecord, String> ID = createField(DSL.name("id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
+    public final TableField<RunRecord, UUID> ID = createField(DSL.name("id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
 
     /**
      * The column <code>srrdb.run.user_id</code>.
      */
-    public final TableField<RunRecord, String> USER_ID = createField(DSL.name("user_id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
+    public final TableField<RunRecord, UUID> USER_ID = createField(DSL.name("user_id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
 
     /**
      * The column <code>srrdb.run.category_id</code>.
      */
-    public final TableField<RunRecord, String> CATEGORY_ID = createField(DSL.name("category_id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
+    public final TableField<RunRecord, UUID> CATEGORY_ID = createField(DSL.name("category_id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
 
     /**
      * The column <code>srrdb.run.video_url</code>.
@@ -156,7 +157,7 @@ public class Run extends TableImpl<RunRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row8<String, String, String, String, Long, RunStatus, LocalDateTime, LocalDate> fieldsRow() {
+    public Row8<UUID, UUID, UUID, String, Long, RunStatus, LocalDateTime, LocalDate> fieldsRow() {
         return (Row8) super.fieldsRow();
     }
 }

@@ -19,7 +19,7 @@
             </excludes>
             <forcedTypes>
                 <forcedType>
-                    <userType>java.lang.String</userType>
+                    <userType>java.util.UUID</userType>
                     <includeTypes>BINARY\(16\)</includeTypes>
                     <includeExpression>.*\.*ID$</includeExpression>
                     <converter>io.github.sornerol.speedrunrankingsapi.util.typeconverter.UUIDByteArrayToStringConverter</converter>

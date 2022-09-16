@@ -9,6 +9,7 @@ import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.enums.RunStat
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 
 /**
@@ -19,9 +20,9 @@ public class Run implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final String        id;
-    private final String        userId;
-    private final String        categoryId;
+    private final UUID          id;
+    private final UUID          userId;
+    private final UUID          categoryId;
     private final String        videoUrl;
     private final Long          timeMilliseconds;
     private final RunStatus     status;
@@ -40,9 +41,9 @@ public class Run implements Serializable {
     }
 
     public Run(
-        String        id,
-        String        userId,
-        String        categoryId,
+        UUID          id,
+        UUID          userId,
+        UUID          categoryId,
         String        videoUrl,
         Long          timeMilliseconds,
         RunStatus     status,
@@ -62,21 +63,21 @@ public class Run implements Serializable {
     /**
      * Getter for <code>srrdb.run.id</code>.
      */
-    public String getId() {
+    public UUID getId() {
         return this.id;
     }
 
     /**
      * Getter for <code>srrdb.run.user_id</code>.
      */
-    public String getUserId() {
+    public UUID getUserId() {
         return this.userId;
     }
 
     /**
      * Getter for <code>srrdb.run.category_id</code>.
      */
-    public String getCategoryId() {
+    public UUID getCategoryId() {
         return this.categoryId;
     }
 

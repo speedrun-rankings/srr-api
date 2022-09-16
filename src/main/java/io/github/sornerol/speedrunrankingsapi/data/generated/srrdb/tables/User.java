@@ -11,6 +11,7 @@ import io.github.sornerol.speedrunrankingsapi.util.typeconverter.UUIDByteArrayTo
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
@@ -51,7 +52,7 @@ public class User extends TableImpl<UserRecord> {
     /**
      * The column <code>srrdb.user.id</code>.
      */
-    public final TableField<UserRecord, String> ID = createField(DSL.name("id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
+    public final TableField<UserRecord, UUID> ID = createField(DSL.name("id"), SQLDataType.BINARY(16).nullable(false), this, "", new UUIDByteArrayToStringConverter());
 
     /**
      * The column <code>srrdb.user.username</code>.
@@ -152,7 +153,7 @@ public class User extends TableImpl<UserRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row5<String, String, String, String, Boolean> fieldsRow() {
+    public Row5<UUID, String, String, String, Boolean> fieldsRow() {
         return (Row5) super.fieldsRow();
     }
 }
