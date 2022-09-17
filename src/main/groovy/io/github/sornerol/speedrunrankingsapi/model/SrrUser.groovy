@@ -1,6 +1,7 @@
 package io.github.sornerol.speedrunrankingsapi.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import io.github.sornerol.speedrunrankingsapi.enums.SiteRole
 
 class SrrUser {
     UUID id
@@ -8,7 +9,7 @@ class SrrUser {
     @JsonIgnore String password
     String email
     Boolean enabled
-    String siteRole
+    SiteRole siteRole
     List<UUID> moderatedGames
     List<UUID> moderatedSeries
     List<UUID> ownedGames
