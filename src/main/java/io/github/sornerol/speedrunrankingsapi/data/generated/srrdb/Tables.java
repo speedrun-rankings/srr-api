@@ -12,7 +12,6 @@ import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.Run;
 import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.Series;
 import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.SiteRole;
 import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.User;
-import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.UserSiteRoleAsg;
 
 
 /**
@@ -60,9 +59,4 @@ public class Tables {
      * The table <code>srrdb.user</code>.
      */
     public static final User USER = User.USER;
-
-    /**
-     * The table <code>srrdb.user_site_role_asg</code>.
-     */
-    public static final UserSiteRoleAsg USER_SITE_ROLE_ASG = UserSiteRoleAsg.USER_SITE_ROLE_ASG;
 }

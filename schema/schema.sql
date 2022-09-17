@@ -1,13 +1,7 @@
--- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
---
--- Host: 127.0.0.1    Database: srrdb
--- ------------------------------------------------------
--- Server version	5.5.5-10.5.9-MariaDB-1:10.5.9+maria~focal
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,7 +15,7 @@
 
 DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
   `id` binary(16) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -39,7 +33,7 @@ CREATE TABLE `category` (
 
 DROP TABLE IF EXISTS `game`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `game` (
   `id` binary(16) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -58,7 +52,7 @@ CREATE TABLE `game` (
 
 DROP TABLE IF EXISTS `game_platform_asg`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `game_platform_asg` (
   `game_id` binary(16) NOT NULL,
   `platform_id` int(11) NOT NULL,
@@ -75,7 +69,7 @@ CREATE TABLE `game_platform_asg` (
 
 DROP TABLE IF EXISTS `platform`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `platform` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -89,7 +83,7 @@ CREATE TABLE `platform` (
 
 DROP TABLE IF EXISTS `run`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `run` (
   `id` binary(16) NOT NULL,
   `user_id` binary(16) NOT NULL,
@@ -108,7 +102,7 @@ CREATE TABLE `run` (
 
 DROP TABLE IF EXISTS `series`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `series` (
   `id` binary(16) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -123,19 +117,23 @@ CREATE TABLE `series` (
 
 DROP TABLE IF EXISTS `site_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `site_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-INSERT INTO srrdb.site_role (id, role_name) VALUES
-	 (1, 'Owner'),
-	 (2, 'Administrator'),
-	 (3, 'Moderator'),
-	 (4, 'User');
+--
+-- Dumping data for table `site_role`
+--
+
+LOCK TABLES `site_role` WRITE;
+/*!40000 ALTER TABLE `site_role` DISABLE KEYS */;
+INSERT INTO `site_role` VALUES (1,'Owner'),(2,'Administrator'),(3,'Moderator'),(4,'User');
+/*!40000 ALTER TABLE `site_role` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
@@ -143,31 +141,17 @@ INSERT INTO srrdb.site_role (id, role_name) VALUES
 
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `id` binary(16) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(60) NOT NULL,
   `email` varchar(255) NOT NULL,
   `enabled` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `user_site_role_asg`
---
-
-DROP TABLE IF EXISTS `user_site_role_asg`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_site_role_asg` (
-  `user_id` binary(16) NOT NULL,
-  `site_role_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`user_id`),
-  KEY `user_site_role_asg_FK_1` (`site_role_id`),
-  CONSTRAINT `user_site_role_asg_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `user_site_role_asg_FK_1` FOREIGN KEY (`site_role_id`) REFERENCES `site_role` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  `site_role_id` int(11) NOT NULL DEFAULT 4,
+  PRIMARY KEY (`id`),
+  KEY `user_FK` (`site_role_id`),
+  CONSTRAINT `user_FK` FOREIGN KEY (`site_role_id`) REFERENCES `site_role` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -179,5 +163,3 @@ CREATE TABLE `user_site_role_asg` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2022-09-13 23:13:16

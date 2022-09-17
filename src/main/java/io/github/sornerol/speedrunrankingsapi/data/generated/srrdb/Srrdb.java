@@ -13,7 +13,6 @@ import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.Run;
 import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.Series;
 import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.SiteRole;
 import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.User;
-import io.github.sornerol.speedrunrankingsapi.data.generated.srrdb.tables.UserSiteRoleAsg;
 
 import java.util.Arrays;
 import java.util.List;
@@ -77,11 +76,6 @@ public class Srrdb extends SchemaImpl {
     public final User USER = User.USER;
 
     /**
-     * The table <code>srrdb.user_site_role_asg</code>.
-     */
-    public final UserSiteRoleAsg USER_SITE_ROLE_ASG = UserSiteRoleAsg.USER_SITE_ROLE_ASG;
-
-    /**
      * No further instances allowed
      */
     private Srrdb() {
@@ -104,7 +98,6 @@ public class Srrdb extends SchemaImpl {
             Run.RUN,
             Series.SERIES,
             SiteRole.SITE_ROLE,
-            User.USER,
-            UserSiteRoleAsg.USER_SITE_ROLE_ASG);
+            User.USER);
     }
 }

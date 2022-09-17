@@ -21,6 +21,7 @@ public class User implements Serializable {
     private final String  password;
     private final String  email;
     private final Boolean enabled;
+    private final Integer siteRoleId;
 
     public User(User value) {
         this.id = value.id;
@@ -28,6 +29,7 @@ public class User implements Serializable {
         this.password = value.password;
         this.email = value.email;
         this.enabled = value.enabled;
+        this.siteRoleId = value.siteRoleId;
     }
 
     public User(
@@ -35,13 +37,15 @@ public class User implements Serializable {
         String  username,
         String  password,
         String  email,
-        Boolean enabled
+        Boolean enabled,
+        Integer siteRoleId
     ) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.enabled = enabled;
+        this.siteRoleId = siteRoleId;
     }
 
     /**
@@ -79,6 +83,13 @@ public class User implements Serializable {
         return this.enabled;
     }
 
+    /**
+     * Getter for <code>srrdb.user.site_role_id</code>.
+     */
+    public Integer getSiteRoleId() {
+        return this.siteRoleId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("User (");
@@ -88,6 +99,7 @@ public class User implements Serializable {
         sb.append(", ").append(password);
         sb.append(", ").append(email);
         sb.append(", ").append(enabled);
+        sb.append(", ").append(siteRoleId);
 
         sb.append(")");
         return sb.toString();

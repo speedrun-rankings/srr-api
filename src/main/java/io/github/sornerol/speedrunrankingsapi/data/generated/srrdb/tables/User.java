@@ -17,7 +17,7 @@ import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row5;
+import org.jooq.Row6;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -74,6 +74,11 @@ public class User extends TableImpl<UserRecord> {
      */
     public final TableField<UserRecord, Boolean> ENABLED = createField(DSL.name("enabled"), SQLDataType.BIT.defaultValue(DSL.field("NULL", SQLDataType.BIT)), this, "");
 
+    /**
+     * The column <code>srrdb.user.site_role_id</code>.
+     */
+    public final TableField<UserRecord, Integer> SITE_ROLE_ID = createField(DSL.name("site_role_id"), SQLDataType.INTEGER.nullable(false).defaultValue(DSL.field("4", SQLDataType.INTEGER)), this, "");
+
     private User(Name alias, Table<UserRecord> aliased) {
         this(alias, aliased, null);
     }
@@ -123,6 +128,20 @@ public class User extends TableImpl<UserRecord> {
     }
 
     @Override
+    public List<ForeignKey<UserRecord, ?>> getReferences() {
+        return Arrays.<ForeignKey<UserRecord, ?>>asList(Keys.USER_FK);
+    }
+
+    private transient SiteRole _siteRole;
+
+    public SiteRole siteRole() {
+        if (_siteRole == null)
+            _siteRole = new SiteRole(this, Keys.USER_FK);
+
+        return _siteRole;
+    }
+
+    @Override
     public User as(String alias) {
         return new User(DSL.name(alias), this);
     }
@@ -149,11 +168,11 @@ public class User extends TableImpl<UserRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row5 type methods
+    // Row6 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row5<UUID, String, String, String, Boolean> fieldsRow() {
-        return (Row5) super.fieldsRow();
+    public Row6<UUID, String, String, String, Boolean, Integer> fieldsRow() {
+        return (Row6) super.fieldsRow();
     }
 }
