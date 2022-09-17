@@ -131,6 +131,12 @@ CREATE TABLE `site_role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO srrdb.site_role (id, role_name) VALUES
+	 (1, 'Owner'),
+	 (2, 'Administrator'),
+	 (3, 'Moderator'),
+	 (4, 'User');
+
 --
 -- Table structure for table `user`
 --
