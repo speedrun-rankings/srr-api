@@ -30,7 +30,7 @@
         <generate>
             <deprecated>false</deprecated>
             <records>true</records>
-            <immutablePojos>true</immutablePojos>
+            <pojos>true</pojos>
             <fluentSetters>true</fluentSetters>
         </generate>
         <target>

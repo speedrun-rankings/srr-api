@@ -15,8 +15,10 @@ public class SiteRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final Integer id;
-    private final String  roleName;
+    private Integer id;
+    private String  roleName;
+
+    public SiteRole() {}
 
     public SiteRole(SiteRole value) {
         this.id = value.id;
@@ -39,10 +41,26 @@ public class SiteRole implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.site_role.id</code>.
+     */
+    public SiteRole setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.site_role.role_name</code>.
      */
     public String getRoleName() {
         return this.roleName;
+    }
+
+    /**
+     * Setter for <code>srrdb.site_role.role_name</code>.
+     */
+    public SiteRole setRoleName(String roleName) {
+        this.roleName = roleName;
+        return this;
     }
 
     @Override

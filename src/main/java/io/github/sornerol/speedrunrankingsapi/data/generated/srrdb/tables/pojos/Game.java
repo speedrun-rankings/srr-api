@@ -17,11 +17,13 @@ public class Game implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final UUID      id;
-    private final String    name;
-    private final UUID      seriesId;
-    private final LocalDate releaseDate;
-    private final String    permalink;
+    private UUID      id;
+    private String    name;
+    private UUID      seriesId;
+    private LocalDate releaseDate;
+    private String    permalink;
+
+    public Game() {}
 
     public Game(Game value) {
         this.id = value.id;
@@ -53,10 +55,26 @@ public class Game implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.game.id</code>.
+     */
+    public Game setId(UUID id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.game.name</code>.
      */
     public String getName() {
         return this.name;
+    }
+
+    /**
+     * Setter for <code>srrdb.game.name</code>.
+     */
+    public Game setName(String name) {
+        this.name = name;
+        return this;
     }
 
     /**
@@ -67,6 +85,14 @@ public class Game implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.game.series_id</code>.
+     */
+    public Game setSeriesId(UUID seriesId) {
+        this.seriesId = seriesId;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.game.release_date</code>.
      */
     public LocalDate getReleaseDate() {
@@ -74,10 +100,26 @@ public class Game implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.game.release_date</code>.
+     */
+    public Game setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.game.permalink</code>.
      */
     public String getPermalink() {
         return this.permalink;
+    }
+
+    /**
+     * Setter for <code>srrdb.game.permalink</code>.
+     */
+    public Game setPermalink(String permalink) {
+        this.permalink = permalink;
+        return this;
     }
 
     @Override

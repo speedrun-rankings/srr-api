@@ -16,12 +16,14 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final UUID    id;
-    private final String  username;
-    private final String  password;
-    private final String  email;
-    private final Boolean enabled;
-    private final Integer siteRoleId;
+    private UUID    id;
+    private String  username;
+    private String  password;
+    private String  email;
+    private Boolean enabled;
+    private Integer siteRoleId;
+
+    public User() {}
 
     public User(User value) {
         this.id = value.id;
@@ -56,10 +58,26 @@ public class User implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.user.id</code>.
+     */
+    public User setId(UUID id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.user.username</code>.
      */
     public String getUsername() {
         return this.username;
+    }
+
+    /**
+     * Setter for <code>srrdb.user.username</code>.
+     */
+    public User setUsername(String username) {
+        this.username = username;
+        return this;
     }
 
     /**
@@ -70,10 +88,26 @@ public class User implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.user.password</code>.
+     */
+    public User setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.user.email</code>.
      */
     public String getEmail() {
         return this.email;
+    }
+
+    /**
+     * Setter for <code>srrdb.user.email</code>.
+     */
+    public User setEmail(String email) {
+        this.email = email;
+        return this;
     }
 
     /**
@@ -84,10 +118,26 @@ public class User implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.user.enabled</code>.
+     */
+    public User setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.user.site_role_id</code>.
      */
     public Integer getSiteRoleId() {
         return this.siteRoleId;
+    }
+
+    /**
+     * Setter for <code>srrdb.user.site_role_id</code>.
+     */
+    public User setSiteRoleId(Integer siteRoleId) {
+        this.siteRoleId = siteRoleId;
+        return this;
     }
 
     @Override

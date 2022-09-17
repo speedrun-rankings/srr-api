@@ -16,10 +16,12 @@ public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final UUID   id;
-    private final String name;
-    private final String permalink;
-    private final UUID   gameId;
+    private UUID   id;
+    private String name;
+    private String permalink;
+    private UUID   gameId;
+
+    public Category() {}
 
     public Category(Category value) {
         this.id = value.id;
@@ -48,10 +50,26 @@ public class Category implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.category.id</code>.
+     */
+    public Category setId(UUID id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.category.name</code>.
      */
     public String getName() {
         return this.name;
+    }
+
+    /**
+     * Setter for <code>srrdb.category.name</code>.
+     */
+    public Category setName(String name) {
+        this.name = name;
+        return this;
     }
 
     /**
@@ -62,10 +80,26 @@ public class Category implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.category.permalink</code>.
+     */
+    public Category setPermalink(String permalink) {
+        this.permalink = permalink;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.category.game_id</code>.
      */
     public UUID getGameId() {
         return this.gameId;
+    }
+
+    /**
+     * Setter for <code>srrdb.category.game_id</code>.
+     */
+    public Category setGameId(UUID gameId) {
+        this.gameId = gameId;
+        return this;
     }
 
     @Override

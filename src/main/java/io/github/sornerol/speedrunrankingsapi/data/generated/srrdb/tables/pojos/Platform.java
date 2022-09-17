@@ -15,8 +15,10 @@ public class Platform implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final Integer id;
-    private final String  name;
+    private Integer id;
+    private String  name;
+
+    public Platform() {}
 
     public Platform(Platform value) {
         this.id = value.id;
@@ -39,10 +41,26 @@ public class Platform implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.platform.id</code>.
+     */
+    public Platform setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.platform.name</code>.
      */
     public String getName() {
         return this.name;
+    }
+
+    /**
+     * Setter for <code>srrdb.platform.name</code>.
+     */
+    public Platform setName(String name) {
+        this.name = name;
+        return this;
     }
 
     @Override

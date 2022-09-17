@@ -20,14 +20,16 @@ public class Run implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final UUID          id;
-    private final UUID          userId;
-    private final UUID          categoryId;
-    private final String        videoUrl;
-    private final Long          timeMilliseconds;
-    private final RunStatus     status;
-    private final LocalDateTime submittedTimestamp;
-    private final LocalDate     playedDate;
+    private UUID          id;
+    private UUID          userId;
+    private UUID          categoryId;
+    private String        videoUrl;
+    private Long          timeMilliseconds;
+    private RunStatus     status;
+    private LocalDateTime submittedTimestamp;
+    private LocalDate     playedDate;
+
+    public Run() {}
 
     public Run(Run value) {
         this.id = value.id;
@@ -68,10 +70,26 @@ public class Run implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.run.id</code>.
+     */
+    public Run setId(UUID id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.run.user_id</code>.
      */
     public UUID getUserId() {
         return this.userId;
+    }
+
+    /**
+     * Setter for <code>srrdb.run.user_id</code>.
+     */
+    public Run setUserId(UUID userId) {
+        this.userId = userId;
+        return this;
     }
 
     /**
@@ -82,10 +100,26 @@ public class Run implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.run.category_id</code>.
+     */
+    public Run setCategoryId(UUID categoryId) {
+        this.categoryId = categoryId;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.run.video_url</code>.
      */
     public String getVideoUrl() {
         return this.videoUrl;
+    }
+
+    /**
+     * Setter for <code>srrdb.run.video_url</code>.
+     */
+    public Run setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+        return this;
     }
 
     /**
@@ -96,10 +130,26 @@ public class Run implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.run.time_milliseconds</code>.
+     */
+    public Run setTimeMilliseconds(Long timeMilliseconds) {
+        this.timeMilliseconds = timeMilliseconds;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.run.status</code>.
      */
     public RunStatus getStatus() {
         return this.status;
+    }
+
+    /**
+     * Setter for <code>srrdb.run.status</code>.
+     */
+    public Run setStatus(RunStatus status) {
+        this.status = status;
+        return this;
     }
 
     /**
@@ -110,10 +160,26 @@ public class Run implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.run.submitted_timestamp</code>.
+     */
+    public Run setSubmittedTimestamp(LocalDateTime submittedTimestamp) {
+        this.submittedTimestamp = submittedTimestamp;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.run.played_date</code>.
      */
     public LocalDate getPlayedDate() {
         return this.playedDate;
+    }
+
+    /**
+     * Setter for <code>srrdb.run.played_date</code>.
+     */
+    public Run setPlayedDate(LocalDate playedDate) {
+        this.playedDate = playedDate;
+        return this;
     }
 
     @Override

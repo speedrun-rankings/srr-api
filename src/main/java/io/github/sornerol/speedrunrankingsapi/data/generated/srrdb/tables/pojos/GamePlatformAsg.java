@@ -16,8 +16,10 @@ public class GamePlatformAsg implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final UUID    gameId;
-    private final Integer platformId;
+    private UUID    gameId;
+    private Integer platformId;
+
+    public GamePlatformAsg() {}
 
     public GamePlatformAsg(GamePlatformAsg value) {
         this.gameId = value.gameId;
@@ -40,10 +42,26 @@ public class GamePlatformAsg implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.game_platform_asg.game_id</code>.
+     */
+    public GamePlatformAsg setGameId(UUID gameId) {
+        this.gameId = gameId;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.game_platform_asg.platform_id</code>.
      */
     public Integer getPlatformId() {
         return this.platformId;
+    }
+
+    /**
+     * Setter for <code>srrdb.game_platform_asg.platform_id</code>.
+     */
+    public GamePlatformAsg setPlatformId(Integer platformId) {
+        this.platformId = platformId;
+        return this;
     }
 
     @Override

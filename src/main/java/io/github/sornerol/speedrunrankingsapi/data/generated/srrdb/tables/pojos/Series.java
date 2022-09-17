@@ -16,9 +16,11 @@ public class Series implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final UUID   id;
-    private final String name;
-    private final String permalink;
+    private UUID   id;
+    private String name;
+    private String permalink;
+
+    public Series() {}
 
     public Series(Series value) {
         this.id = value.id;
@@ -44,6 +46,14 @@ public class Series implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.series.id</code>.
+     */
+    public Series setId(UUID id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.series.name</code>.
      */
     public String getName() {
@@ -51,10 +61,26 @@ public class Series implements Serializable {
     }
 
     /**
+     * Setter for <code>srrdb.series.name</code>.
+     */
+    public Series setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
      * Getter for <code>srrdb.series.permalink</code>.
      */
     public String getPermalink() {
         return this.permalink;
+    }
+
+    /**
+     * Setter for <code>srrdb.series.permalink</code>.
+     */
+    public Series setPermalink(String permalink) {
+        this.permalink = permalink;
+        return this;
     }
 
     @Override
